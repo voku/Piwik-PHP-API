@@ -435,7 +435,7 @@ class Piwik
 		/** @noinspection OpAssignShortSyntaxInspection */
 		/** @noinspection AdditionOperationOnArraysInspection */
 		$params = $params + $optional;
-		
+
 		$url = $this->_parseUrl($method, $params);
 		if ($url === false) {
 			return false;
@@ -446,7 +446,7 @@ class Piwik
 			$req->strict_ssl = $this->verifySsl;
 			$req->max_redirects = $this->maxRedirects;
 			$req->setConnectionTimeout($this->connectionTimeout);
-			
+
 			$buffer = $req->send();
 		} catch (\Exception $e) {
 			$this->_addError('_request error: ' . $e->getMessage() . ' (' . $url . ')');
@@ -535,8 +535,10 @@ class Piwik
 			);
 
 		} else {
+
 			$this->_addError('Specify a date or a date range!');
 			return false;
+
 		}
 
 		$url = $this->_site;
@@ -709,7 +711,7 @@ class Piwik
 	 * Get default metrics documentation
 	 *
 	 * @param array $optional
-	 * 
+	 *
 	 * @return false|object
 	 */
 	public function getDefaultMetricsDocumentation(array $optional = []) {
@@ -721,7 +723,7 @@ class Piwik
 	 *
 	 * @param array $sites Array with the ID's of the sites
 	 * @param array $optional
-	 * 
+	 *
 	 * @return false|object
 	 */
 	public function getSegmentsMetadata($sites = [], array $optional = []) {
@@ -1205,7 +1207,7 @@ class Piwik
 	/**
 	 * Save annotation
 	 *
-	 * @param int $idNote
+	 * @param int|string $idNote
 	 * @param string $note
 	 * @param int|string $starred
 	 * @param array $optional
@@ -1223,7 +1225,7 @@ class Piwik
 	/**
 	 * Delete annotation
 	 *
-	 * @param int $idNote
+	 * @param int|string $idNote
 	 * @param array $optional
 	 *
 	 * @return false|object
@@ -1248,7 +1250,7 @@ class Piwik
 	/**
 	 * Get annotation
 	 *
-	 * @param int $idNote
+	 * @param int|string $idNote
 	 * @param array $optional
 	 *
 	 * @return false|object
@@ -2162,7 +2164,6 @@ class Piwik
 	 * @param string $columns
 	 * @param string $labels
 	 * @param boolean|string $showLegend
-	 * @param boolean|string $showMetricTitle
 	 * @param int|string $width
 	 * @param int|string $height
 	 * @param int|string $fontSize
@@ -3225,7 +3226,7 @@ class Piwik
 	 * @param int|string $language
 	 * @param int|string $outputType
 	 * @param string $reportFormat
-	 * @param array $parameters
+	 * @param array|string $parameters
 	 * @param array $optional
 	 *
 	 * @return false|object
@@ -3595,8 +3596,8 @@ class Piwik
 	 * @param boolean|string $siteSearch
 	 * @param string $searchKeywordParameters
 	 * @param string $searchCategoryParameters
-	 * @param array $excludeIps
-	 * @param array $excludedQueryParameters
+	 * @param array|string $excludeIps
+	 * @param array|string $excludedQueryParameters
 	 * @param string $timezone
 	 * @param string $currency
 	 * @param string $group
@@ -3904,13 +3905,13 @@ class Piwik
 	 * Update current site
 	 *
 	 * @param string $siteName
-	 * @param array $urls
-	 * @param boolean $ecommerce
-	 * @param boolean $siteSearch
+	 * @param array|string $urls
+	 * @param boolean|string $ecommerce
+	 * @param boolean|string $siteSearch
 	 * @param string $searchKeywordParameters
 	 * @param string $searchCategoryParameters
-	 * @param array $excludeIps
-	 * @param array $excludedQueryParameters
+	 * @param array|string $excludeIps
+	 * @param array|string $excludedQueryParameters
 	 * @param string $timezone
 	 * @param string $currency
 	 * @param string $group
@@ -4071,7 +4072,7 @@ class Piwik
 	 * @param string $segment
 	 * @param string $limitBeforeGrouping
 	 * @param string $parts
-	 * @param bool $returnNormalizedUrls
+	 * @param bool|string $returnNormalizedUrls
 	 * @param array $optional
 	 *
 	 * @return false|object
@@ -4318,7 +4319,7 @@ class Piwik
 	/**
 	 * Get user by username
 	 *
-	 * @param array $userLogins Array with Usernames
+	 * @param array|string $userLogins Array with Usernames
 	 * @param array $optional
 	 *
 	 * @return false|object
@@ -4619,7 +4620,7 @@ class Piwik
 	 * Get the visit by server time
 	 *
 	 * @param string $segment
-	 * @param boolean $hideFutureHoursWhenToday Hide the future hours when the report is created for today
+	 * @param boolean|string $hideFutureHoursWhenToday Hide the future hours when the report is created for today
 	 * @param array $optional
 	 *
 	 * @return false|object
