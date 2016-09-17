@@ -184,6 +184,13 @@ class PiwikTest extends PHPUnit_Framework_TestCase
 
 		$this->assertFalse($result);
 		$this->assertEquals(2, count($this->_piwik->getErrors()));
+
+		// Test with wrong url => error 2
+		$this->_piwik->setSite('http://fooo/404');
+		$result = $this->_piwik->getVisitsSummary();
+
+		$this->assertFalse($result);
+		$this->assertEquals(4, count($this->_piwik->getErrors()));
 	}
 
 	/**
